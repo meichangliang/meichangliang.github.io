@@ -1,12 +1,62 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cmn-Hans">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>我的主页</title>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=width=device-width" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="keywords" content="工具,js,工具集合" />
+    <meta name="description" content="私人使用的工具集合" />
+    <meta name="author" content="Mark,670188307@qq.com" />
+    <meta name="robots" content="index,follow" />
+    <meta name="apple-mobile-web-app-title" content="梅昌亮的工具集" />
+    <title>梅昌亮的工具集</title>
+    <script src="public/dist/jquery.js"></script>
   </head>
+
   <body>
-    <h1>这里是首页</h1>
+    <h1>工具集合</h1>
+    <a href="page/time.html">时间计算</a>
+    <img src="https://markimg.github.io/lifeimg/1365762990323.jpg" alt=" " />
   </body>
 </html>
+<script>
+  //常见的函数声明方式:
+  //第一种:
+  var this_is_Fun = function(str) {
+    //接收字符串
+    console.log(str); //打印123
+  };
+  //第二种 :
+  function this_is_Fun_2(str) {
+    //接受字符串
+    console.log(str); //打印456
+  }
+  //执行:
+  this_is_Fun("123"); //传入123字符串
+  this_is_Fun_2("456"); //传入456字符串
+
+  //执行匿名函数
+  (function(str) {
+    //接收1111字符串
+    console.log(str); //打印1111字符串
+  })("11111"); //传入 1111字符串
+
+  function domian() {
+    let a = "xxxxxxxxxx";
+
+    if (true) {
+      loop();
+    }
+
+    function loop() {
+      console.log(a);
+    }
+  }
+
+  domian();
+</script>

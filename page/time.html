@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="keywords" content="工具,js,工具集合">
+    <meta name="description" content="私人使用的工具集合">
+    <meta name="author" content="Mark,670188307@qq.com">
+    <meta name="robots" content="index,follow">
+    <meta name="apple-mobile-web-app-title" content="梅昌亮的工具集">
+    <title>时间计算</title>
+    <!-- dist -->
+    <link rel="stylesheet" href="../public/css/rest.css">
+    <script src="../public/dist/jquery.js"></script>
+    <script src="../public/dist/moment.js"></script>
+    <!-- dist == end -->
+</head>
+
+<body>
+    <h1>时间计算</h1>
+    <div>
+        当前日期:
+        <span class="nowDate"></span>
+    </div>
+    <div>
+        当前时间:
+        <span class="nowTime"></span>
+    </div>
+    <div>
+        当前是今年的第几周:
+        <span class="nowWeek"></span>
+    </div>
+    <div>
+        今年总周数:
+        <span class="weekAll"> moment().isoWeeksInYear() </span>
+    </div>
+    <div>
+        当前是今年的第几天:
+        <span class="nowDay"></span>
+    </div>
+    <div>
+        今年总天数:
+        <span class="dayAll"></span>
+    </div>
+    <div>
+        本周开始日期:
+        <span class="weekStart"></span>
+    </div>
+    <div>
+        本周结束日期:
+        <span class="weekEnd"></span>
+    </div>
+    <div>
+        weekly:
+        <br>
+        <span class="weeklyname"></span>
+        <button id="copyname">复制</button>
+        <br>
+        <span class="weeklySE"></span>
+        <button id="copytitle">复制</button>
+        <br>
+        <span class="cont"></span>
+    </div>
+    <div class="none">
+        <input type="text" id="copytext" value="123123">
+    </div>
+</body>
+<script src="../js/time.js"></script>
+<script>
+    //
+    $(".nowDate").html(getNowDate())
+    //
+    nowTime_Fun();
+
+    function nowTime_Fun() {
+        $(".nowTime").html(getNowTime());
+        setTimeout(function () {
+            nowTime_Fun();
+        }, 1000)
+    }
+    //
+    $(".nowWeek").html(getWeekFromYear())
+    //
+    $(".nowDay").html(getDayFromYear())
+    //
+    $(".weekAll").html(getWeekInYear())
+    //
+    $(".dayAll").html(getDatInYear())
+    //
+    $(".weekStart").html(getWeekStart())
+    //
+    $(".weekEnd").html(getWeekEnd())
+    //
+    $(".weeklyname").html(moment().format('YYYY') + "-" + getWeekFromYear())
+    //
+    $(".weeklySE").html(
+        moment().format('YYYY') + "年第" + getWeekFromYear() + "周" + "  " +
+        moment().startOf("isoWeek").format('M月DD日') + "-" +
+        moment().endOf("isoWeek").format('M月DD日')
+    )
+    //
+    $(".cont").html( getWeekDate() )
+    //fun
+    $("#copyname").click(function () {
+        var Str = $(".weeklyname").html()
+        copyToClipboard(Str)
+    })
+    $("#copytitle").click(function () {
+        var Str = $(".weeklySE").html()
+        copyToClipboard(Str)
+    })
+
+    function copyToClipboard(Str) {
+        var elem=document.getElementById("copytext");
+        document.getElementById("copytext").value = Str;
+        // create hidden text element, if it doesn't already exist
+        var targetId = "_hiddenCopyText_";
+        var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        var origSelectionStart, origSelectionEnd;
+        if (isInput) {
+            // can just use the original source element for the selection and copy
+            target = elem;
+            origSelectionStart = elem.selectionStart;
+            origSelectionEnd = elem.selectionEnd;
+        } else {
+            // must use a temporary form element for the selection and copy
+            target = document.getElementById(targetId);
+            if (!target) {
+                var target = document.createElement("textarea");
+                target.style.position = "absolute";
+                target.style.left = "-9999px";
+                target.style.top = "0";
+                target.id = targetId;
+                document.body.appendChild(target);
+            }
+            target.textContent = elem.textContent;
+        }
+        // select the content
+        var currentFocus = document.activeElement;
+        target.focus();
+        target.setSelectionRange(0, target.value.length);
+        // copy the selection
+        var succeed;
+        try {
+            succeed = document.execCommand("copy");
+        } catch (e) {
+            succeed = false;
+        }
+        // restore original focus
+        if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+        }
+        if (isInput) {
+            // restore prior selection
+            elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        } else {
+            // clear temporary content
+            target.textContent = "";
+        }
+        alert(Str + "\n已经复制到您的剪切板")
+        return succeed;
+    }
+</script>
+
+</html>
