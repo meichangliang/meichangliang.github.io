@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ajax基础demo</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="div">
+      这里仅说明ajax的用途以及介绍 axios.js 库的使用 , 具体的 axios
+      信息以及说明可自行百度
+    </div>
+    <button id="send">点我请求白熊阅读首页 get</button>
+    <button id="send2">点我请求 post</button>
+    <div id="wapper"></div>
+  </body>
+</html>
+<script>
+  var dom_element = document.getElementById("send");
+  dom_element.onclick = function() {
+    getBearead();
+  };
+
+  function getBearead(params) {
+    axios({
+      method: "get",
+      url: "https://www.bearead.com/"
+    }).then(function(res) {
+      //在这里将首页代码插入 dom
+      console.log(res);
+      console.log(res.data);
+
+      var wapper = document.getElementById("wapper");
+      wapper.textContent = res.data; //在这里可以使用 innerHtml来当作标签插入
+    });
+  }
+  //请求本地文件如果报错请查看下列文档
+  // https://www.jianshu.com/p/b4c5b0c167c7
+  document.getElementById("send2").onclick = function() {
+    axios({
+      method: "post",
+      url: "https://api2.bearead.com/api3/label_v2/recommend_list",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" }
+    });
+  };
+</script>
