@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>这是一个裁切插件,把图片裁切成九宫格</title>
+    <style>
+      .imageBox {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        position: relative;
+      }
+      .imageBox > span {
+        position: absolute;
+        display: block;
+        z-index: 99;
+      }
+      .line-1,
+      .line-2 {
+        height: 100%;
+        width: 4px;
+        background-color: #fff;
+      }
+      .line-3,
+      .line-4 {
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+      }
+      .line-1 {
+        left: 100px;
+      }
+      .line-2 {
+        left: 200px;
+      }
+      .line-3 {
+        top: 100px;
+      }
+      .line-4 {
+        top: 200px;
+      }
+
+      .image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <input type="file" onchange="upperCase(this)" />
+    <div class="imageBox">
+      <span class="line-1"></span>
+      <span class="line-2"></span>
+      <span class="line-3"></span>
+      <span class="line-4"></span>
+      <img class="image" src="" />
+    </div>
+  </body>
+</html>
+<script>
+  function upperCase(e) {
+    var file = e.files[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+      // 通过 reader.result 来访问生成的 DataURL
+      var url = reader.result;
+      var imageDom = document.getElementsByClassName("image");
+      imageDom[0].src = url;
+      // for (let i = 0; i < imageDom.length; i++) {
+      //   const el = imageDom[i];
+      //   el.src = url;
+      // }
+      // setImageURL(url);
+    };
+    // reader.readAsDataURL(file);
+  }
+
+  // function setImageURL(url) {
+  //   var image = new Image();
+  //   image.src = url;
+  //   image.onload = function() {
+  //     var w = image.width;
+  //     var h = image.height;
+  //     var borderNum = w - h > 0 ? h : w;
+  //     cropImage(borderNum);
+  //   };
+  // }
+
+  // function cropImage(borderNum) {
+  //   console.log(borderNum);
+  // }
+</script>
