@@ -67,6 +67,7 @@
     reader.onload = function() {
       // 通过 reader.result 来访问生成的 DataURL
       var url = reader.result;
+      //只是展示九宫格的话css就可以了,这里是选取图片
       var imageDom = document.getElementsByClassName("image");
       for (let i = 0; i < imageDom.length; i++) {
         const el = imageDom[i];
@@ -76,17 +77,17 @@
     };
     reader.readAsDataURL(file);
   }
-
-  function setImageURL(url) {
-    var image = new Image();
-    image.src = url;
-    image.onload = function() {
-      var w = image.width;
-      var h = image.height;
-      var borderNum = w - h > 0 ? h : w;
-      // cropImage(borderNum);
-    };
-  }
+  //下面是裁切要用到的接口函数
+  // function setImageURL(url) {
+  //   var image = new Image();
+  //   image.src = url;
+  //   image.onload = function() {
+  //     var w = image.width;
+  //     var h = image.height;
+  //     var borderNum = w - h > 0 ? h : w;
+  //     // cropImage(borderNum);
+  //   };
+  // }
 
   // function cropImage(borderNum) {
   //   console.log(borderNum);
