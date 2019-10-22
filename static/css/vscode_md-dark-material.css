@@ -12,12 +12,11 @@
   color: #e06c75;
 }
 
+.vscode-dark,
 .vscode-dark pre code {
   color: #abb2bf;
 }
-.vscode-dark strong {
-  color: brown;
-}
+
 .vscode-dark code {
   color: #90c378;
 }
@@ -29,10 +28,6 @@
 
 .vscode-dark table > thead > tr > th {
   border-color: #2c323c;
-}
-.vscode-dark li,
-.vscode-dark ol {
-  color: rgb(137, 177, 166);
 }
 
 .vscode-dark h1,
