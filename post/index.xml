@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on myblog</title>
+    <link>https://meichangliang.github.io/post/</link>
+    <description>Recent content in Posts on myblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Mar 2020 01:42:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://meichangliang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First</title>
+      <link>https://meichangliang.github.io/post/first/</link>
+      <pubDate>Fri, 06 Mar 2020 01:42:23 +0800</pubDate>
+      
+      <guid>https://meichangliang.github.io/post/first/</guid>
+      <description>这是我的第一个 hogo 文章  aaa bbb ccc  </description>
+    </item>
+    
+  </channel>
+</rss>
